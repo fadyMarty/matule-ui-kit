@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.fadymarty.matule_ui_kit.R
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
@@ -62,25 +61,11 @@ fun PrimaryCard(
                 SmallButton(
                     label = if (added) {
                         stringResource(R.string.add)
-                    } else stringResource(R.string.remove),
+                    } else stringResource(R.string.delete),
                     onClick = onClick,
                     outlined = added
                 )
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun PrimaryCardPreview() {
-    MatuleTheme {
-        PrimaryCard(
-            title = "Рубашка Воскресенье для машинного вязания",
-            type = "Мужская одежда",
-            price = 300,
-            onClick = {},
-            added = false
-        )
     }
 }

@@ -102,9 +102,9 @@ object MatuleIcons {
         @Composable
         get() = ImageVector.Companion.vectorResource(R.drawable.ic_catalog)
 
-    val ProjectList: ImageVector
+    val Projects: ImageVector
         @Composable
-        get() = ImageVector.Companion.vectorResource(R.drawable.ic_project_list)
+        get() = ImageVector.Companion.vectorResource(R.drawable.ic_projects)
 
     val Profile: ImageVector
         @Composable

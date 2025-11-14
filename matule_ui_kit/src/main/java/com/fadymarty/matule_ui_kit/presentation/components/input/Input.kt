@@ -22,9 +22,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
+import com.fadymarty.matule_ui_kit.presentation.util.TestTags
+import com.fadymarty.matule_ui_kit.presentation.util.borderColorRes
+import com.fadymarty.matule_ui_kit.presentation.util.colorRes
 
 @Composable
 fun Input(
@@ -40,6 +45,17 @@ fun Input(
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
+
+    val errorColor = MatuleTheme.colorScheme.error
+    val backgroundColor = if (error != null) {
+        MatuleTheme.colorScheme.error.copy(alpha = 0.1f)
+    } else MatuleTheme.colorScheme.inputBg
+    val borderColor = when {
+        error != null -> MatuleTheme.colorScheme.error
+        isFocused || focus -> MatuleTheme.colorScheme.accent
+        value.isNotEmpty() -> MatuleTheme.colorScheme.inputIcon
+        else -> MatuleTheme.colorScheme.inputStroke
+    }
 
     Column(
         modifier = modifier
@@ -69,22 +85,22 @@ fun Input(
                     .height(48.dp)
                     .clip(RoundedCornerShape(10.dp))
                     .background(
-                        color = if (error != null) {
-                            MatuleTheme.colorScheme.error.copy(alpha = 0.1f)
-                        } else MatuleTheme.colorScheme.inputBg
+                        color = backgroundColor
                     )
                     .border(
-                        width = 1.dp, color = when {
-                            error != null -> MatuleTheme.colorScheme.error
-                            isFocused || focus -> MatuleTheme.colorScheme.accent
-                            value.isNotEmpty() -> MatuleTheme.colorScheme.inputIcon
-                            else -> MatuleTheme.colorScheme.inputStroke
-                        }, shape = RoundedCornerShape(10.dp)
+                        width = 1.dp,
+                        color = borderColor,
+                        shape = RoundedCornerShape(10.dp)
                     )
                     .padding(
                         start = 14.dp,
                         end = 15.dp,
-                    ),
+                    )
+                    .testTag(TestTags.INPUT_CONTAINER)
+                    .semantics {
+                        colorRes = backgroundColor
+                        borderColorRes = borderColor
+                    },
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Box(
@@ -108,9 +124,14 @@ fun Input(
         if (error != null) {
             Spacer(Modifier.height(8.dp))
             Text(
+                modifier = Modifier
+                    .testTag(TestTags.INPUT_ERROR_TEXT)
+                    .semantics {
+                        colorRes = errorColor
+                    },
                 text = error,
                 style = MatuleTheme.typography.captionRegular,
-                color = MatuleTheme.colorScheme.error
+                color = errorColor
             )
         }
     }

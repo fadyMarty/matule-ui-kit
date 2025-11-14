@@ -7,8 +7,12 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
+import com.fadymarty.matule_ui_kit.presentation.util.TestTags
+import com.fadymarty.matule_ui_kit.presentation.util.colorRes
 
 @Composable
 fun ChipButton(
@@ -17,8 +21,16 @@ fun ChipButton(
     onClick: () -> Unit,
     label: String,
 ) {
+    val containerColor = if (selected) {
+        MatuleTheme.colorScheme.accent
+    } else MatuleTheme.colorScheme.inputBg
+
     Button(
-        modifier = modifier,
+        modifier = modifier
+            .testTag(TestTags.CHIP_BUTTON)
+            .semantics {
+                colorRes = containerColor
+            },
         onClick = onClick,
         shape = RoundedCornerShape(10.dp),
         contentPadding = PaddingValues(
@@ -26,9 +38,7 @@ fun ChipButton(
             vertical = 14.dp
         ),
         colors = ButtonDefaults.buttonColors(
-            containerColor = if (selected) {
-                MatuleTheme.colorScheme.accent
-            } else MatuleTheme.colorScheme.inputBg,
+            containerColor = containerColor,
             contentColor = if (selected) {
                 MatuleTheme.colorScheme.onAccent
             } else MatuleTheme.colorScheme.description

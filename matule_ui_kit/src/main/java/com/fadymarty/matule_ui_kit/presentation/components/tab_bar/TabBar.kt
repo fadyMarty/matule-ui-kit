@@ -16,9 +16,13 @@ import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.shadow.Shadow
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
+import com.fadymarty.matule_ui_kit.presentation.util.TestTags
+import com.fadymarty.matule_ui_kit.presentation.util.colorRes
 
 @Composable
 fun TabBar(
@@ -43,8 +47,18 @@ fun TabBar(
     ) {
         items.forEach { item ->
             val isSelected = selectedRoute == item.route::class.qualifiedName
+            val iconColor = if (isSelected) {
+                MatuleTheme.colorScheme.accent
+            } else MatuleTheme.colorScheme.inputIcon
 
             NavigationBarItem(
+                modifier = Modifier
+                    .testTag(
+                        TestTags.TAB_BAR_ITEM + item.label
+                    )
+                    .semantics {
+                        colorRes = iconColor
+                    },
                 selected = isSelected,
                 colors = NavigationBarItemDefaults.colors(
                     indicatorColor = Color.Transparent,
@@ -57,12 +71,12 @@ fun TabBar(
                     ) {
                         Icon(
                             modifier = Modifier.size(item.iconSize),
-                            imageVector = item.icon(),
+                            imageVector = item.icon,
                             contentDescription = null
                         )
                         Spacer(Modifier.height(item.spacing))
                         Text(
-                            text = item.label(),
+                            text = item.label,
                             style = MatuleTheme.typography.caption2Regular
                         )
                     }

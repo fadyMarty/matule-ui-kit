@@ -19,7 +19,8 @@ fun MatuleTheme(
             colorScheme = lightColorScheme(
                 primary = colorScheme.accent,
                 onPrimary = colorScheme.onAccent,
-                background = colorScheme.background,
+                background = MatuleTheme.colorScheme.background,
+                onBackground = colorScheme.onBackground,
                 error = colorScheme.error
             ),
             content = content

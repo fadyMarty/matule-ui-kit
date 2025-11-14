@@ -10,9 +10,11 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
+import com.fadymarty.matule_ui_kit.presentation.util.TestTags
 
 @Composable
 fun SmallButton(
@@ -25,7 +27,9 @@ fun SmallButton(
 ) {
     if (outlined) {
         OutlinedButton(
-            modifier = modifier.width(96.dp),
+            modifier = modifier
+                .width(96.dp)
+                .testTag(TestTags.OUTLINED_SMALL_BUTTON),
             onClick = onClick,
             contentPadding = PaddingValues(
                 horizontal = 13.5.dp,
@@ -46,7 +50,9 @@ fun SmallButton(
         }
     } else {
         Button(
-            modifier = modifier.width(96.dp),
+            modifier = modifier
+                .width(96.dp)
+                .testTag(TestTags.SMALL_BUTTON),
             onClick = onClick,
             contentPadding = PaddingValues(
                 horizontal = 13.5.dp,

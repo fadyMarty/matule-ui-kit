@@ -3,10 +3,7 @@
     <string name="add_to_cart">В корзину</string>
     <string name="error_notification">Произошла ошибка\nНу вот опять</string>
     <string name="add">Добавить</string>
-    <string name="remove">Убрать</string>
+    <string name="delete">Убрать</string>
     <string name="count">%1$d штук</string>
     <string name="open">Открыть</string>
-    <string name="main">Главная</string>
-    <string name="catalog">Каталог</string>
-    <string name="projects">Проекты</string>
 </resources>
