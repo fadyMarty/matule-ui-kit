@@ -11,8 +11,8 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
-import com.fadymarty.matule_ui_kit.presentation.util.TestTags
-import com.fadymarty.matule_ui_kit.presentation.util.colorRes
+import com.fadymarty.matule_ui_kit.common.util.TestTags
+import com.fadymarty.matule_ui_kit.common.util.colorRes
 
 @Composable
 fun ChipButton(

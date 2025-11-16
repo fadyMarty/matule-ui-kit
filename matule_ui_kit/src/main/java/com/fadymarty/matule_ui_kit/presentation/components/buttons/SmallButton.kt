@@ -14,7 +14,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
-import com.fadymarty.matule_ui_kit.presentation.util.TestTags
+import com.fadymarty.matule_ui_kit.common.util.TestTags
 
 @Composable
 fun SmallButton(
@@ -46,6 +46,7 @@ fun SmallButton(
                 style = MatuleTheme.typography.captionSemibold,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
+                color = MatuleTheme.colorScheme.accent
             )
         }
     } else {

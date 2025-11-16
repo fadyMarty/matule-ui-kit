@@ -24,9 +24,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
+import com.fadymarty.matule_ui_kit.common.util.TestTags
 import com.fadymarty.matule_ui_kit.presentation.components.icons.MatuleIcons
 import com.fadymarty.matule_ui_kit.presentation.components.modal.Modal
-import com.fadymarty.matule_ui_kit.presentation.util.TestTags
 
 @Composable
 fun Select(

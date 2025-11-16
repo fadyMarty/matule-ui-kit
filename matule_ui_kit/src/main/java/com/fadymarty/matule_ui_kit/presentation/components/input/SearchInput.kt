@@ -85,7 +85,10 @@ fun SearchInput(
                 Icon(
                     modifier = Modifier
                         .size(20.dp)
-                        .clickable {
+                        .clickable(
+                            interactionSource = null,
+                            indication = null
+                        ) {
                             onClear()
                         },
                     imageVector = MatuleIcons.Close,

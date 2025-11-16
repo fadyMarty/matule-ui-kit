@@ -8,10 +8,10 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.dp
 import com.fadymarty.matule_ui_kit.common.theme.MatulePalette
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
+import com.fadymarty.matule_ui_kit.common.util.ColorRes
+import com.fadymarty.matule_ui_kit.common.util.TestTags
 import com.fadymarty.matule_ui_kit.presentation.components.icons.MatuleIcons
 import com.fadymarty.matule_ui_kit.presentation.navigation.Route
-import com.fadymarty.matule_ui_kit.presentation.util.ColorRes
-import com.fadymarty.matule_ui_kit.presentation.util.TestTags
 import org.junit.Rule
 import org.junit.Test
 

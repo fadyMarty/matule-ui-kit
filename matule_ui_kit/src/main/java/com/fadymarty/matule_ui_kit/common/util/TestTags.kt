@@ -1,4 +1,4 @@
-package com.fadymarty.matule_ui_kit.presentation.util
+package com.fadymarty.matule_ui_kit.common.util
 
 object TestTags {
 

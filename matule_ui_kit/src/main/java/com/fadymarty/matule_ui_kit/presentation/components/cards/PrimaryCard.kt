@@ -60,8 +60,8 @@ fun PrimaryCard(
                 }
                 SmallButton(
                     label = if (added) {
-                        stringResource(R.string.add)
-                    } else stringResource(R.string.delete),
+                        stringResource(R.string.delete)
+                    } else stringResource(R.string.add),
                     onClick = onClick,
                     outlined = added
                 )

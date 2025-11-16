@@ -3,9 +3,11 @@ package com.fadymarty.matule_ui_kit.presentation.components.buttons
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +24,7 @@ fun BigButton(
     active: Boolean = true,
     outlined: Boolean = false,
     tertiary: Boolean = false,
+    isLoading: Boolean = false,
 ) {
     if (outlined) {
         OutlinedButton(
@@ -34,12 +37,18 @@ fun BigButton(
                 color = MatuleTheme.colorScheme.accent
             )
         ) {
-            Text(
-                text = label,
-                style = MatuleTheme.typography.title3Semibold,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
+            if (isLoading) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(20.dp)
+                )
+            } else {
+                Text(
+                    text = label,
+                    style = MatuleTheme.typography.title3Semibold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
         }
     } else {
         Button(
@@ -59,12 +68,19 @@ fun BigButton(
                 disabledContentColor = MatuleTheme.colorScheme.onAccent
             )
         ) {
-            Text(
-                text = label,
-                style = MatuleTheme.typography.title3Semibold,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
+            if (isLoading) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(20.dp),
+                    color = MatuleTheme.colorScheme.onAccent
+                )
+            } else {
+                Text(
+                    text = label,
+                    style = MatuleTheme.typography.title3Semibold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
         }
     }
 }

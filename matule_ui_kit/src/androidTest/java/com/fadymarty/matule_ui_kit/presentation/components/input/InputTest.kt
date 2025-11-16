@@ -7,9 +7,9 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import com.fadymarty.matule_ui_kit.common.theme.MatulePalette
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
-import com.fadymarty.matule_ui_kit.presentation.util.BorderColorRes
-import com.fadymarty.matule_ui_kit.presentation.util.ColorRes
-import com.fadymarty.matule_ui_kit.presentation.util.TestTags
+import com.fadymarty.matule_ui_kit.common.util.BorderColorRes
+import com.fadymarty.matule_ui_kit.common.util.ColorRes
+import com.fadymarty.matule_ui_kit.common.util.TestTags
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

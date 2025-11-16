@@ -5,7 +5,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
-import com.fadymarty.matule_ui_kit.presentation.util.TestTags
+import com.fadymarty.matule_ui_kit.common.util.TestTags
 import org.junit.Rule
 import org.junit.Test
 
