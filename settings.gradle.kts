@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Matule UI Kit"
 include(":app")
-include(":matule_ui_kit")
+include(":ui_kit")
