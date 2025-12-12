@@ -132,4 +132,4 @@ data class MatuleTypography(
     ),
 )
 
-internal val LocalMatuleTypography = staticCompositionLocalOf { MatuleTypography() }
+val LocalMatuleTypography = staticCompositionLocalOf { MatuleTypography() }

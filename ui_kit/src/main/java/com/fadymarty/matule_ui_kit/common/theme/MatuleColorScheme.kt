@@ -19,4 +19,4 @@ data class MatuleColorScheme(
     val cardStroke: Color = MatulePalette.CardStroke,
 )
 
-internal val LocalMatuleColorScheme = staticCompositionLocalOf { MatuleColorScheme() }
+val LocalMatuleColorScheme = staticCompositionLocalOf { MatuleColorScheme() }

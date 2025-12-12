@@ -1,5 +1,6 @@
 package com.fadymarty.matule_ui_kit.presentation.components.cards
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -29,23 +30,18 @@ fun ProjectCard(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp)
+                .padding(16.dp)
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-            ) {
-                Text(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = title,
-                    style = MatuleTheme.typography.headlineMedium
-                )
-            }
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = title,
+                style = MatuleTheme.typography.headlineMedium
+            )
             Spacer(Modifier.height(44.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.Bottom
+                verticalAlignment = Alignment.Bottom,
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
                     modifier = Modifier.padding(bottom = 4.dp),

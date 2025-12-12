@@ -27,7 +27,7 @@ import com.fadymarty.matule_ui_kit.presentation.components.icons.MatuleIcons
 fun Modal(
     modifier: Modifier = Modifier,
     onDismissRequest: () -> Unit,
-    title: String,
+    title: String? = null,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     ModalBackground(
@@ -43,12 +43,16 @@ fun Modal(
             Row(
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(
-                    modifier = Modifier.weight(1f),
-                    text = title,
-                    style = MatuleTheme.typography.title2ExtraBold
-                )
-                Spacer(Modifier.width(44.dp))
+                if (title != null) {
+                    Text(
+                        modifier = Modifier.weight(1f),
+                        text = title,
+                        style = MatuleTheme.typography.title2ExtraBold
+                    )
+                    Spacer(Modifier.width(44.dp))
+                } else {
+                    Spacer(Modifier.weight(1f))
+                }
                 Box(
                     modifier = Modifier
                         .size(24.dp)

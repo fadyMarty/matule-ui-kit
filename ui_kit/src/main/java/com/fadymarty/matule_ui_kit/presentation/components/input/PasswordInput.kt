@@ -37,7 +37,7 @@ fun PasswordInput(
         error = error,
         visualTransformation = if (isPasswordVisible) {
             VisualTransformation.None
-        } else PasswordVisualTransformation(),
+        } else PasswordVisualTransformation('*'),
         focus = focus,
         trailingIcon = {
             Icon(

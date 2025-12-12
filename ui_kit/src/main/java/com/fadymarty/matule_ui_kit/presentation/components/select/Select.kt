@@ -34,9 +34,9 @@ import com.fadymarty.matule_ui_kit.presentation.components.modal.Modal
 fun Select(
     modifier: Modifier = Modifier,
     items: List<String>,
-    selectedItem: String? = null,
+    selectedItem: String?,
     onItemClick: (String) -> Unit,
-    hint: String,
+    hint: String? = null,
     label: String? = null,
     leadingIcon: (@Composable () -> Unit)? = null,
 ) {
@@ -84,7 +84,7 @@ fun Select(
                 if (leadingIcon != null) {
                     leadingIcon()
                 }
-                if (selectedItem == null) {
+                if (selectedItem == null && hint != null) {
                     Text(
                         text = hint,
                         style = MatuleTheme.typography.headlineRegular,
