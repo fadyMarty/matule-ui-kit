@@ -90,35 +90,4 @@ object MatuleIcons {
         @Composable
         get() = ImageVector.vectorResource(R.drawable.ic_eye_on)
 
-    val Del: ImageVector
-        @Composable
-        get() = ImageVector.vectorResource(R.drawable.ic_del)
-
-    val Home: ImageVector
-        @Composable
-        get() = ImageVector.vectorResource(R.drawable.ic_home)
-
-    val Catalog: ImageVector
-        @Composable
-        get() = ImageVector.vectorResource(R.drawable.ic_catalog)
-
-    val Projects: ImageVector
-        @Composable
-        get() = ImageVector.vectorResource(R.drawable.ic_projects)
-
-    val Profile: ImageVector
-        @Composable
-        get() = ImageVector.vectorResource(R.drawable.ic_profile)
-
-    val Yandex: ImageVector
-        @Composable
-        get() = ImageVector.vectorResource(R.drawable.ic_yandex)
-
-    val Vk: ImageVector
-        @Composable
-        get() = ImageVector.vectorResource(R.drawable.ic_vk)
-
-    val SelectImage: ImageVector
-        @Composable
-        get() = ImageVector.vectorResource(R.drawable.ic_select_image)
 }
