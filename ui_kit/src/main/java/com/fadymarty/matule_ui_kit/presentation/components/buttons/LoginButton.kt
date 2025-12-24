@@ -23,7 +23,7 @@ fun LoginButton(
     modifier: Modifier = Modifier,
     label: String,
     onClick: () -> Unit,
-    trailingIcon: ImageVector,
+    leadingIcon: ImageVector,
 ) {
     Button(
         modifier = modifier.fillMaxWidth(),
@@ -41,7 +41,7 @@ fun LoginButton(
     ) {
         Icon(
             modifier = Modifier.size(32.dp),
-            imageVector = trailingIcon,
+            imageVector = leadingIcon,
             contentDescription = null,
             tint = Color.Unspecified
         )

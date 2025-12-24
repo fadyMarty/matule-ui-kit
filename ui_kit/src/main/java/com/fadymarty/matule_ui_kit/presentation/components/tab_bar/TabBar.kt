@@ -1,8 +1,8 @@
 package com.fadymarty.matule_ui_kit.presentation.components.tab_bar
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -28,7 +28,7 @@ import com.fadymarty.matule_ui_kit.common.util.colorRes
 fun TabBar(
     modifier: Modifier = Modifier,
     items: List<TabBarItem>,
-    selectedRoute: String?,
+    currentRoute: String?,
     onItemClick: (TabBarItem) -> Unit,
 ) {
     NavigationBar(
@@ -46,7 +46,7 @@ fun TabBar(
         containerColor = MatuleTheme.colorScheme.background
     ) {
         items.forEach { item ->
-            val isSelected = selectedRoute == item.route::class.qualifiedName
+            val isSelected = currentRoute == item.route::class.qualifiedName
             val iconColor = if (isSelected) {
                 MatuleTheme.colorScheme.accent
             } else MatuleTheme.colorScheme.inputIcon
@@ -70,11 +70,12 @@ fun TabBar(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Icon(
-                            modifier = Modifier.size(item.iconSize),
+                            modifier = Modifier
+                                .padding(item.iconPadding)
+                                .size(item.iconSize),
                             imageVector = item.icon,
                             contentDescription = null
                         )
-                        Spacer(Modifier.height(item.spacing))
                         Text(
                             text = item.label,
                             style = MatuleTheme.typography.caption2Regular

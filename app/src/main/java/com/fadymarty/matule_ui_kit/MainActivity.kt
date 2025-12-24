@@ -317,7 +317,7 @@ class MainActivity : ComponentActivity() {
                                 BigButton(
                                     label = "Подтвердить",
                                     onClick = {},
-                                    active = false
+                                    enabled = false
                                 )
                                 BigButton(
                                     label = "Подтвердить",
@@ -345,7 +345,7 @@ class MainActivity : ComponentActivity() {
                                 SmallButton(
                                     label = "Подтвердить",
                                     onClick = {},
-                                    active = false
+                                    enabled = false
                                 )
                                 SmallButton(
                                     label = "Подтвердить",
@@ -380,12 +380,12 @@ class MainActivity : ComponentActivity() {
                                 )
                                 LoginButton(
                                     label = "Войти с VK",
-                                    trailingIcon = ImageVector.vectorResource(R.drawable.ic_vk),
+                                    leadingIcon = ImageVector.vectorResource(R.drawable.ic_vk),
                                     onClick = {}
                                 )
                                 LoginButton(
                                     label = "Войти с Yandex",
-                                    trailingIcon = ImageVector.vectorResource(R.drawable.ic_yandex),
+                                    leadingIcon = ImageVector.vectorResource(R.drawable.ic_yandex),
                                     onClick = {}
                                 )
                                 Text(

@@ -1,16 +1,19 @@
 package com.fadymarty.matule_ui_kit.presentation.components.tab_bar
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.dp
+import com.fadymarty.matule_ui_kit.R
 import com.fadymarty.matule_ui_kit.common.theme.MatulePalette
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
 import com.fadymarty.matule_ui_kit.common.util.ColorRes
 import com.fadymarty.matule_ui_kit.common.util.TestTags
-import com.fadymarty.matule_ui_kit.presentation.components.icons.MatuleIcons
 import com.fadymarty.matule_ui_kit.presentation.navigation.Route
 import org.junit.Rule
 import org.junit.Test
@@ -27,29 +30,29 @@ class TabBarTest {
                 TabBar(
                     items = listOf(
                         TabBarItem(
-                            icon = MatuleIcons.Home,
+                            icon = ImageVector.vectorResource(R.drawable.ic_home),
                             label = "Главная",
                             route = Route.HomeScreen
                         ),
                         TabBarItem(
-                            icon = MatuleIcons.Catalog,
+                            icon = ImageVector.vectorResource(R.drawable.ic_catalog),
                             label = "Каталог",
                             route = Route.CatalogScreen
                         ),
                         TabBarItem(
-                            icon = MatuleIcons.Projects,
+                            icon = ImageVector.vectorResource(R.drawable.ic_projects),
                             label = "Проекты",
                             route = Route.ProjectsScreen,
                             iconSize = 24.dp,
-                            spacing = 3.dp
+                            iconPadding = PaddingValues(top = 5.dp, bottom = 3.dp)
                         ),
                         TabBarItem(
-                            icon = MatuleIcons.Profile,
+                            icon = ImageVector.vectorResource(R.drawable.ic_profile),
                             label = "Профиль",
                             route = Route.ProfileScreen
                         )
                     ),
-                    selectedRoute = Route.HomeScreen::class.qualifiedName,
+                    currentRoute = Route.HomeScreen::class.qualifiedName,
                     onItemClick = {}
                 )
             }

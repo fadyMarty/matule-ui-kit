@@ -26,8 +26,7 @@ fun CartButton(
     price: Int,
 ) {
     Button(
-        modifier = modifier
-            .fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         onClick = onClick,
         contentPadding = PaddingValues(16.dp),
         shape = RoundedCornerShape(10.dp)

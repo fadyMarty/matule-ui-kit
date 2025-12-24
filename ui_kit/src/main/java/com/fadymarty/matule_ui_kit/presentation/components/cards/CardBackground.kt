@@ -2,8 +2,7 @@ package com.fadymarty.matule_ui_kit.presentation.components.cards
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -18,9 +17,9 @@ import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
 @Composable
 fun CardBackground(
     modifier: Modifier = Modifier,
-    content: @Composable ColumnScope.() -> Unit,
+    content: @Composable () -> Unit,
 ) {
-    Column(
+    Box(
         modifier = modifier
             .fillMaxWidth()
             .dropShadow(
@@ -36,7 +35,8 @@ fun CardBackground(
                 width = 1.dp,
                 color = MatuleTheme.colorScheme.cardStroke,
                 shape = RoundedCornerShape(12.dp)
-            ),
-        content = content
-    )
+            )
+    ) {
+        content()
+    }
 }
