@@ -263,13 +263,13 @@ class MainActivity : ComponentActivity() {
                                 PasswordInput(
                                     value = "123456789",
                                     onValueChange = {},
-                                    isPasswordVisible = false,
+                                    isVisible = false,
                                     onTrailingIconClick = {}
                                 )
                                 PasswordInput(
                                     value = "123456789",
                                     onValueChange = {},
-                                    isPasswordVisible = true,
+                                    isVisible = true,
                                     onTrailingIconClick = {}
                                 )
                                 Input(

@@ -126,7 +126,7 @@ fun Select(
                             .height(48.dp)
                             .clickable {
                                 onItemClick(item)
-                                isModalVisible = true
+                                isModalVisible = false
                             }
                             .padding(
                                 start = if (selectedItem?.icon != null) 18.dp else 20.dp,

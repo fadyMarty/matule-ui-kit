@@ -15,7 +15,7 @@ fun PasswordInput(
     modifier: Modifier = Modifier,
     value: String,
     onValueChange: (String) -> Unit,
-    isPasswordVisible: Boolean,
+    isVisible: Boolean,
     onTrailingIconClick: () -> Unit,
     hint: String? = null,
     label: String? = null,
@@ -29,7 +29,7 @@ fun PasswordInput(
         hint = hint,
         label = label,
         error = error,
-        visualTransformation = if (isPasswordVisible) {
+        visualTransformation = if (isVisible) {
             VisualTransformation.None
         } else PasswordVisualTransformation('*'),
         trailingIcon = {
@@ -41,7 +41,7 @@ fun PasswordInput(
                         indication = null,
                         onClick = onTrailingIconClick
                     ),
-                imageVector = if (isPasswordVisible) {
+                imageVector = if (isVisible) {
                     MatuleIcons.VisibilityOn
                 } else MatuleIcons.VisibilityOff,
                 contentDescription = null,
