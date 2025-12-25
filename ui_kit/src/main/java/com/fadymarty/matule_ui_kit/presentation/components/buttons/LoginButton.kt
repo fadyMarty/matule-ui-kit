@@ -1,5 +1,6 @@
 package com.fadymarty.matule_ui_kit.presentation.components.buttons
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -15,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
 
@@ -22,8 +24,8 @@ import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
 fun LoginButton(
     modifier: Modifier = Modifier,
     label: String,
+    @DrawableRes icon: Int,
     onClick: () -> Unit,
-    leadingIcon: ImageVector,
 ) {
     Button(
         modifier = modifier.fillMaxWidth(),
@@ -41,7 +43,7 @@ fun LoginButton(
     ) {
         Icon(
             modifier = Modifier.size(32.dp),
-            imageVector = leadingIcon,
+            imageVector = ImageVector.vectorResource(icon),
             contentDescription = null,
             tint = Color.Unspecified
         )

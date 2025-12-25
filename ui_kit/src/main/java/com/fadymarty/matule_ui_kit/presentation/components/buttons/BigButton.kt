@@ -20,10 +20,10 @@ fun BigButton(
         modifier = modifier.fillMaxWidth(),
         label = label,
         onClick = onClick,
-        textStyle = MatuleTheme.typography.title3Semibold,
-        contentPadding = PaddingValues(16.dp),
         enabled = enabled,
         outlined = outlined,
-        tertiary = tertiary
+        tertiary = tertiary,
+        textStyle = MatuleTheme.typography.title3Semibold,
+        contentPadding = PaddingValues(16.dp)
     )
 }

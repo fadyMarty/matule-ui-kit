@@ -20,10 +20,10 @@ fun SmallButton(
         modifier = modifier.width(96.dp),
         label = label,
         onClick = onClick,
-        textStyle = MatuleTheme.typography.captionSemibold,
-        contentPadding = PaddingValues(horizontal = 13.5.dp, vertical = 10.dp),
         enabled = enabled,
         outlined = outlined,
-        tertiary = tertiary
+        tertiary = tertiary,
+        textStyle = MatuleTheme.typography.captionSemibold,
+        contentPadding = PaddingValues(horizontal = 13.5.dp, vertical = 10.dp),
     )
 }

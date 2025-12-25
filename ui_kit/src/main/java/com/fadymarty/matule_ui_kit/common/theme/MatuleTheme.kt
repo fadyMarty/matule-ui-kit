@@ -37,5 +37,4 @@ object MatuleTheme {
     val typography: MatuleTypography
         @Composable
         get() = LocalMatuleTypography.current
-
 }

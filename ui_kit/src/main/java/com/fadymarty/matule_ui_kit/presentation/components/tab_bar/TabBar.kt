@@ -16,7 +16,9 @@ import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.shadow.Shadow
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
@@ -37,8 +39,8 @@ fun TabBar(
             .dropShadow(
                 shape = RectangleShape,
                 shadow = Shadow(
-                    radius = 0.dp,
                     offset = DpOffset(0.dp, (-0.5).dp),
+                    radius = 0.dp,
                     color = Color(0xFFA0A0A0),
                     alpha = 0.3f
                 )
@@ -73,7 +75,7 @@ fun TabBar(
                             modifier = Modifier
                                 .padding(item.iconPadding)
                                 .size(item.iconSize),
-                            imageVector = item.icon,
+                            imageVector = ImageVector.vectorResource(item.icon),
                             contentDescription = null
                         )
                         Text(

@@ -7,17 +7,18 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
 import com.fadymarty.matule_ui_kit.presentation.components.buttons.BackButton
 import com.fadymarty.matule_ui_kit.presentation.components.buttons.BigButton
@@ -34,17 +35,48 @@ import com.fadymarty.matule_ui_kit.presentation.components.controls.Counter
 import com.fadymarty.matule_ui_kit.presentation.components.controls.Toggle
 import com.fadymarty.matule_ui_kit.presentation.components.header.BigHeader
 import com.fadymarty.matule_ui_kit.presentation.components.header.SmallHeader
+import com.fadymarty.matule_ui_kit.presentation.components.icons.MatuleIcons
 import com.fadymarty.matule_ui_kit.presentation.components.input.Input
 import com.fadymarty.matule_ui_kit.presentation.components.input.PasswordInput
 import com.fadymarty.matule_ui_kit.presentation.components.input.SearchInput
 import com.fadymarty.matule_ui_kit.presentation.components.select.Select
+import com.fadymarty.matule_ui_kit.presentation.components.select.SelectItem
 import com.fadymarty.matule_ui_kit.presentation.components.snack_bar.SnackBar
+import com.fadymarty.matule_ui_kit.presentation.components.tab_bar.TabBar
+import com.fadymarty.matule_ui_kit.presentation.components.tab_bar.TabBarItem
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val tabBarItems = remember {
+                listOf(
+                    TabBarItem(
+                        icon = R.drawable.ic_home,
+                        label = "Главная",
+                        route = Route.Home
+                    ),
+                    TabBarItem(
+                        icon = R.drawable.ic_catalog,
+                        label = "Каталог",
+                        route = Route.Catalog
+                    ),
+                    TabBarItem(
+                        icon = R.drawable.ic_projects,
+                        label = "Проекты",
+                        route = Route.Projects,
+                        iconSize = 24.dp,
+                        iconPadding = PaddingValues(top = 5.dp, bottom = 3.dp)
+                    ),
+                    TabBarItem(
+                        icon = R.drawable.ic_profile,
+                        label = "Профиль",
+                        route = Route.Profile
+                    )
+                )
+            }
+
             MatuleTheme {
                 Scaffold { innerPadding ->
                     LazyColumn(
@@ -52,8 +84,8 @@ class MainActivity : ComponentActivity() {
                         contentPadding = PaddingValues(
                             start = 20.dp,
                             top = innerPadding.calculateTopPadding() + 32.dp,
-                            bottom = innerPadding.calculateBottomPadding() + 32.dp,
-                            end = 20.dp
+                            end = 20.dp,
+                            bottom = innerPadding.calculateBottomPadding() + 32.dp
                         ),
                         verticalArrangement = Arrangement.spacedBy(64.dp)
                     ) {
@@ -65,10 +97,6 @@ class MainActivity : ComponentActivity() {
                                     text = "Контролы",
                                     style = MatuleTheme.typography.title1ExtraBold
                                 )
-                                Text(
-                                    text = "Toggle",
-                                    style = MatuleTheme.typography.title3Semibold
-                                )
                                 Toggle(
                                     checked = false,
                                     onClick = {}
@@ -76,10 +104,6 @@ class MainActivity : ComponentActivity() {
                                 Toggle(
                                     checked = true,
                                     onClick = {}
-                                )
-                                Text(
-                                    text = "Counter",
-                                    style = MatuleTheme.typography.title3Semibold
                                 )
                                 Counter(
                                     count = 1,
@@ -101,19 +125,40 @@ class MainActivity : ComponentActivity() {
                                     text = "Хэдер",
                                     style = MatuleTheme.typography.title1ExtraBold
                                 )
-                                SmallHeader(
-                                    label = "Корзина",
-                                    onNavigateBack = {},
-                                    onDeleteClick = {}
-                                )
                                 BigHeader(
-                                    label = "Корзина",
-                                    onNavigateBack = {},
-                                    onDeleteClick = {}
+                                    title = "Корзина",
+                                    navigationIcon = {
+                                        BackButton(
+                                            onClick = {}
+                                        )
+                                    },
+                                    trailingIcon = {
+                                        Icon(
+                                            modifier = Modifier.size(20.dp),
+                                            imageVector = MatuleIcons.Delete,
+                                            contentDescription = null,
+                                            tint = MatuleTheme.colorScheme.inputIcon
+                                        )
+                                    }
+                                )
+                                SmallHeader(
+                                    title = "Корзина",
+                                    navigationIcon = {
+                                        BackButton(
+                                            onClick = {}
+                                        )
+                                    },
+                                    trailingIcon = {
+                                        Icon(
+                                            modifier = Modifier.size(20.dp),
+                                            imageVector = MatuleIcons.Delete,
+                                            contentDescription = null,
+                                            tint = MatuleTheme.colorScheme.inputIcon
+                                        )
+                                    }
                                 )
                             }
                         }
-
                         item {
                             Column(
                                 verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -122,17 +167,12 @@ class MainActivity : ComponentActivity() {
                                     text = "Модальные окна",
                                     style = MatuleTheme.typography.title1ExtraBold
                                 )
-                                Text(
-                                    text = "SnackBar",
-                                    style = MatuleTheme.typography.title3Semibold
-                                )
                                 SnackBar(
                                     message = "Произошла ошибка\nНу вот опять",
-                                    onClose = {}
+                                    onDismiss = {}
                                 )
                             }
                         }
-
                         item {
                             Column(
                                 verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -141,49 +181,39 @@ class MainActivity : ComponentActivity() {
                                     text = "Карточки",
                                     style = MatuleTheme.typography.title1ExtraBold
                                 )
-                                Text(
-                                    text = "Card background",
-                                    style = MatuleTheme.typography.title3Semibold
-                                )
-                                CardBackground {
-                                    Spacer(Modifier.height(138.dp))
-                                }
-                                Text(
-                                    text = "Primary",
-                                    style = MatuleTheme.typography.title3Semibold
+                                CardBackground(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(138.dp),
+                                    content = {}
                                 )
                                 PrimaryCard(
                                     title = "Рубашка Воскресенье для машинного вязания",
                                     type = "Мужская одежда",
-                                    price = 300,
+                                    price = "300 ₽",
                                     added = true,
-                                    onClick = {}
+                                    onClick = {},
+                                    onButtonClick = {}
                                 )
                                 PrimaryCard(
                                     title = "Рубашка Воскресенье для машинного вязания",
                                     type = "Мужская одежда",
-                                    price = 300,
+                                    price = "300 ₽",
                                     added = false,
-                                    onClick = {}
-                                )
-                                Text(
-                                    text = "Cart",
-                                    style = MatuleTheme.typography.title3Semibold
+                                    onClick = {},
+                                    onButtonClick = {}
                                 )
                                 CartCard(
                                     title = "Рубашка воскресенье для машинного вязания",
-                                    price = 300,
+                                    price = "300 ₽",
                                     count = 1,
                                     onPlusClick = {},
                                     onMinusClick = {},
                                     onDeleteClick = {}
                                 )
-                                Text(
-                                    text = "Project",
-                                    style = MatuleTheme.typography.title3Semibold
-                                )
                                 ProjectCard(
                                     title = "Мой первый проект",
+                                    description = "Прошло 2 дня",
                                     onClick = {}
                                 )
                             }
@@ -211,7 +241,7 @@ class MainActivity : ComponentActivity() {
                                     onValueChange = {},
                                     hint = "Введите имя",
                                     label = "Имя",
-                                    focus = true
+                                    focused = true
                                 )
                                 Input(
                                     value = "",
@@ -232,13 +262,21 @@ class MainActivity : ComponentActivity() {
                                 )
                                 PasswordInput(
                                     value = "123456789",
-                                    onValueChange = {}
+                                    onValueChange = {},
+                                    isPasswordVisible = false,
+                                    onTrailingIconClick = {}
+                                )
+                                PasswordInput(
+                                    value = "123456789",
+                                    onValueChange = {},
+                                    isPasswordVisible = true,
+                                    onTrailingIconClick = {}
                                 )
                                 Input(
                                     value = "",
                                     onValueChange = {},
                                     hint = "--.--.----",
-                                    focus = true
+                                    focused = true
                                 )
                             }
                         }
@@ -251,27 +289,35 @@ class MainActivity : ComponentActivity() {
                                     style = MatuleTheme.typography.title1ExtraBold
                                 )
                                 Select(
-                                    items = listOf("Мужской", "Женский"),
+                                    items = listOf(
+                                        SelectItem(label = "Мужской"),
+                                        SelectItem(label = "Женский")
+                                    ),
                                     selectedItem = null,
                                     hint = "Пол",
                                     onItemClick = {}
                                 )
                                 Select(
-                                    items = listOf("Мужской", "Женский"),
-                                    selectedItem = "Мужской",
+                                    items = listOf(
+                                        SelectItem(label = "Мужской"),
+                                        SelectItem(label = "Женский")
+                                    ),
+                                    selectedItem = SelectItem(label = "Мужской"),
                                     hint = "Пол",
                                     onItemClick = {}
                                 )
                                 Select(
-                                    items = listOf("Гарвард Троцкий"),
-                                    selectedItem = "Гарвард Троцкий",
-                                    onItemClick = {},
-                                    leadingIcon = {
-                                        Text(
-                                            text = "👨",
-                                            fontSize = 24.sp
+                                    items = listOf(
+                                        SelectItem(
+                                            label = "Гарвард Троцкий",
+                                            icon = "👨"
                                         )
-                                    }
+                                    ),
+                                    selectedItem = SelectItem(
+                                        label = "Гарвард Троцкий",
+                                        icon = "👨"
+                                    ),
+                                    onItemClick = {}
                                 )
                             }
                         }
@@ -287,14 +333,14 @@ class MainActivity : ComponentActivity() {
                                     value = "",
                                     onValueChange = {},
                                     hint = "Искать описание",
-                                    onClear = {},
-                                    focus = true
+                                    onClearClick = {},
+                                    focused = true
                                 )
                                 SearchInput(
                                     value = "",
                                     onValueChange = {},
                                     hint = "Искать описание",
-                                    onClear = {}
+                                    onClearClick = {}
                                 )
                             }
                         }
@@ -306,10 +352,6 @@ class MainActivity : ComponentActivity() {
                                     text = "Кнопки",
                                     style = MatuleTheme.typography.title1ExtraBold
                                 )
-                                Text(
-                                    text = "Big",
-                                    style = MatuleTheme.typography.title3Semibold
-                                )
                                 BigButton(
                                     label = "Подтвердить",
                                     onClick = {}
@@ -329,10 +371,6 @@ class MainActivity : ComponentActivity() {
                                     onClick = {},
                                     tertiary = true
                                 )
-                                Text(
-                                    text = "Small",
-                                    style = MatuleTheme.typography.title3Semibold
-                                )
                                 SmallButton(
                                     label = "Подтвердить",
                                     onClick = {}
@@ -351,10 +389,6 @@ class MainActivity : ComponentActivity() {
                                     label = "Подтвердить",
                                     onClick = {},
                                     tertiary = true
-                                )
-                                Text(
-                                    text = "Chips",
-                                    style = MatuleTheme.typography.title3Semibold
                                 )
                                 ChipButton(
                                     selected = true,
@@ -366,37 +400,59 @@ class MainActivity : ComponentActivity() {
                                     label = "Популярные",
                                     onClick = {}
                                 )
-                                Text(
-                                    text = "Cart",
-                                    style = MatuleTheme.typography.title3Semibold
-                                )
                                 CartButton(
                                     price = 500,
                                     onClick = {}
                                 )
-                                Text(
-                                    text = "Log in",
-                                    style = MatuleTheme.typography.title3Semibold
-                                )
                                 LoginButton(
                                     label = "Войти с VK",
-                                    leadingIcon = ImageVector.vectorResource(R.drawable.ic_vk),
+                                    icon = R.drawable.ic_vk,
                                     onClick = {}
                                 )
                                 LoginButton(
                                     label = "Войти с Yandex",
-                                    leadingIcon = ImageVector.vectorResource(R.drawable.ic_yandex),
+                                    icon = R.drawable.ic_yandex,
                                     onClick = {}
                                 )
+                                Row(
+                                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                                ) {
+                                    BackButton(
+                                        onClick = {}
+                                    )
+                                    FilterButton(
+                                        onClick = {}
+                                    )
+                                }
+                            }
+                        }
+                        item {
+                            Column(
+                                verticalArrangement = Arrangement.spacedBy(16.dp)
+                            ) {
                                 Text(
-                                    text = "Bubble",
-                                    style = MatuleTheme.typography.title3Semibold
+                                    text = "Tabbar",
+                                    style = MatuleTheme.typography.title1ExtraBold
                                 )
-                                BackButton(
-                                    onClick = {}
+                                TabBar(
+                                    items = tabBarItems,
+                                    currentRoute = Route.Home::class.qualifiedName,
+                                    onItemClick = {}
                                 )
-                                FilterButton(
-                                    onClick = {}
+                                TabBar(
+                                    items = tabBarItems,
+                                    currentRoute = Route.Catalog::class.qualifiedName,
+                                    onItemClick = {}
+                                )
+                                TabBar(
+                                    items = tabBarItems,
+                                    currentRoute = Route.Projects::class.qualifiedName,
+                                    onItemClick = {}
+                                )
+                                TabBar(
+                                    items = tabBarItems,
+                                    currentRoute = Route.Profile::class.qualifiedName,
+                                    onItemClick = {}
                                 )
                             }
                         }

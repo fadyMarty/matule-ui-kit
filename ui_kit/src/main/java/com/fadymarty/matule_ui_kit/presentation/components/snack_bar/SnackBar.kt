@@ -14,7 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.dropShadow
+import androidx.compose.ui.graphics.shadow.Shadow
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
+import com.fadymarty.matule_ui_kit.common.theme.MatulePalette
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
 import com.fadymarty.matule_ui_kit.presentation.components.icons.MatuleIcons
 
@@ -22,12 +26,21 @@ import com.fadymarty.matule_ui_kit.presentation.components.icons.MatuleIcons
 fun SnackBar(
     modifier: Modifier = Modifier,
     message: String,
-    onClose: () -> Unit,
+    onDismiss: () -> Unit,
 ) {
     Box(modifier = modifier) {
         Box(
             modifier = Modifier
                 .padding(top = 12.dp, end = 12.dp)
+                .dropShadow(
+                    shape = RoundedCornerShape(8.dp),
+                    shadow = Shadow(
+                        offset = DpOffset(0.dp, (-6).dp),
+                        radius = 16.dp,
+                        color = MatulePalette.White,
+                        alpha = 0.5f
+                    )
+                )
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(8.dp))
                 .background(MatuleTheme.colorScheme.background)
@@ -46,13 +59,10 @@ fun SnackBar(
         Box(
             modifier = Modifier
                 .align(Alignment.TopEnd)
-                .size(24.dp)
                 .clip(CircleShape)
                 .background(MatuleTheme.colorScheme.accent.copy(alpha = 0.5f))
-                .clickable {
-                    onClose()
-                },
-            contentAlignment = Alignment.Center
+                .clickable(onClick = onDismiss)
+                .padding(7.dp)
         ) {
             Icon(
                 modifier = Modifier.size(10.dp),

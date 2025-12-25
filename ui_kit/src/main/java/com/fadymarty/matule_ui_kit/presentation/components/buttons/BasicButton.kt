@@ -40,6 +40,7 @@ fun BasicButton(
             Text(
                 text = label,
                 style = textStyle,
+                color = MatuleTheme.colorScheme.accent,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )

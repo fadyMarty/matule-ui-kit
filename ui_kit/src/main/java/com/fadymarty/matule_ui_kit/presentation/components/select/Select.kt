@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,13 +19,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.fadymarty.matule_ui_kit.common.theme.MatuleTheme
 import com.fadymarty.matule_ui_kit.common.util.TestTags
 import com.fadymarty.matule_ui_kit.presentation.components.icons.MatuleIcons
@@ -33,23 +35,20 @@ import com.fadymarty.matule_ui_kit.presentation.components.modal.Modal
 @Composable
 fun Select(
     modifier: Modifier = Modifier,
-    items: List<String>,
-    selectedItem: String?,
-    onItemClick: (String) -> Unit,
+    items: List<SelectItem>,
+    selectedItem: SelectItem?,
+    onItemClick: (SelectItem) -> Unit,
     hint: String? = null,
     label: String? = null,
-    leadingIcon: (@Composable () -> Unit)? = null,
 ) {
-    var isModalVisible by remember {
+    var isModalVisible by rememberSaveable {
         mutableStateOf(false)
     }
 
-    Column(
-        modifier = modifier.fillMaxWidth()
-    ) {
+    Column(modifier) {
         label?.let {
             Text(
-                text = it,
+                text = label,
                 style = MatuleTheme.typography.captionRegular,
                 color = MatuleTheme.colorScheme.description
             )
@@ -59,18 +58,18 @@ fun Select(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
-                .clip(RoundedCornerShape(10.dp))
-                .background(MatuleTheme.colorScheme.inputBg)
                 .border(
                     width = 1.dp,
                     color = MatuleTheme.colorScheme.inputStroke,
                     shape = RoundedCornerShape(10.dp)
                 )
+                .clip(RoundedCornerShape(10.dp))
+                .background(MatuleTheme.colorScheme.inputBg)
                 .clickable {
                     isModalVisible = true
                 }
                 .padding(
-                    start = if (leadingIcon != null) 12.dp else 14.dp,
+                    start = if (selectedItem?.icon != null) 12.dp else 14.dp,
                     end = 14.dp
                 )
                 .testTag(TestTags.SELECT),
@@ -78,11 +77,14 @@ fun Select(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                if (leadingIcon != null) {
-                    leadingIcon()
+                selectedItem?.icon?.let { icon ->
+                    Text(
+                        text = icon,
+                        fontSize = 24.sp
+                    )
                 }
                 if (selectedItem == null && hint != null) {
                     Text(
@@ -91,9 +93,9 @@ fun Select(
                         color = MatuleTheme.colorScheme.placeholder
                     )
                 }
-                if (selectedItem != null) {
+                selectedItem?.let {
                     Text(
-                        text = selectedItem,
+                        text = selectedItem.label,
                         style = MatuleTheme.typography.headlineRegular,
                     )
                 }
@@ -115,21 +117,35 @@ fun Select(
             title = hint
         ) {
             LazyColumn(
-                modifier = Modifier.fillMaxWidth()
+                contentPadding = PaddingValues(vertical = 20.dp)
             ) {
                 items(items) { item ->
-                    Text(
+                    Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(10.dp))
+                            .height(48.dp)
                             .clickable {
                                 onItemClick(item)
-                                isModalVisible = false
+                                isModalVisible = true
                             }
-                            .padding(14.dp),
-                        text = item,
-                        style = MatuleTheme.typography.headlineRegular
-                    )
+                            .padding(
+                                start = if (selectedItem?.icon != null) 18.dp else 20.dp,
+                                end = 20.dp
+                            ),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        item.icon?.let { icon ->
+                            Text(
+                                text = icon,
+                                fontSize = 24.sp
+                            )
+                        }
+                        Text(
+                            text = item.label,
+                            style = MatuleTheme.typography.headlineRegular,
+                        )
+                    }
                 }
             }
         }

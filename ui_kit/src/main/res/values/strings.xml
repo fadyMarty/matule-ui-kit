@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="add_to_cart">В корзину</string>
-    <string name="add">Добавить</string>
-    <string name="delete">Убрать</string>
-    <string name="count">%1$d штук</string>
-    <string name="open">Открыть</string>
-</resources>

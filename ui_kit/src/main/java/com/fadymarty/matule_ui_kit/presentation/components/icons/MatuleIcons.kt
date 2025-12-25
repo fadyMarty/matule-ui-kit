@@ -82,11 +82,11 @@ object MatuleIcons {
         @Composable
         get() = ImageVector.vectorResource(R.drawable.ic_paperclip)
 
-    val EyeOff: ImageVector
+    val VisibilityOff: ImageVector
         @Composable
         get() = ImageVector.vectorResource(R.drawable.ic_eye_off)
 
-    val EyeOn: ImageVector
+    val VisibilityOn: ImageVector
         @Composable
         get() = ImageVector.vectorResource(R.drawable.ic_eye_on)
 
