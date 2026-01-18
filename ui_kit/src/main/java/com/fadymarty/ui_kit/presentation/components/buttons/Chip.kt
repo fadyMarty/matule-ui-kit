@@ -15,7 +15,7 @@ import com.fadymarty.ui_kit.common.util.TestTags
 import com.fadymarty.ui_kit.common.util.colorRes
 
 @Composable
-fun ChipButton(
+fun Chip(
     modifier: Modifier = Modifier,
     selected: Boolean,
     onClick: () -> Unit,

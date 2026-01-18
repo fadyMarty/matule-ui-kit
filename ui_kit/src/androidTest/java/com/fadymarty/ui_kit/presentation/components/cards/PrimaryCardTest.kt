@@ -18,9 +18,9 @@ class PrimaryCardTest {
         composeTestRule.setContent {
             MatuleTheme {
                 PrimaryCard(
-                    title = "Title",
-                    type = "Type",
-                    price = "0 ₽",
+                    title = "Рубашка Воскресенье для машинного вязания",
+                    type = "Мужская одежда",
+                    price = "300 ₽",
                     onClick = {},
                     onButtonClick = {},
                     added = false
@@ -37,9 +37,9 @@ class PrimaryCardTest {
         composeTestRule.setContent {
             MatuleTheme {
                 PrimaryCard(
-                    title = "Title",
-                    type = "Type",
-                    price = "0 ₽",
+                    title = "Рубашка Воскресенье для машинного вязания",
+                    type = "Мужская одежда",
+                    price = "300 ₽",
                     onClick = {},
                     onButtonClick = {},
                     added = true

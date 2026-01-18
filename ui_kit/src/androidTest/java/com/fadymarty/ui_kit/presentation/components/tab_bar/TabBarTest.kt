@@ -2,7 +2,6 @@ package com.fadymarty.ui_kit.presentation.components.tab_bar
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -10,8 +9,8 @@ import androidx.compose.ui.unit.dp
 import com.fadymarty.ui_kit.R
 import com.fadymarty.ui_kit.common.theme.MatulePalette
 import com.fadymarty.ui_kit.common.theme.MatuleTheme
-import com.fadymarty.ui_kit.common.util.ColorRes
 import com.fadymarty.ui_kit.common.util.TestTags
+import com.fadymarty.ui_kit.presentation.common.util.hasColor
 import org.junit.Rule
 import org.junit.Test
 
@@ -55,36 +54,33 @@ class TabBarTest {
             }
         }
 
-        assertTabBarItem(
+        assertIsTabBarItemDisplayed(
             label = "Главная",
             color = MatulePalette.Accent
         )
 
-        assertTabBarItem(
+        assertIsTabBarItemDisplayed(
             label = "Каталог",
             color = MatulePalette.InputIcon
         )
 
-        assertTabBarItem(
+        assertIsTabBarItemDisplayed(
             label = "Проекты",
             color = MatulePalette.InputIcon
         )
 
-        assertTabBarItem(
+        assertIsTabBarItemDisplayed(
             label = "Профиль",
             color = MatulePalette.InputIcon
         )
     }
 
-    private fun assertTabBarItem(
+    private fun assertIsTabBarItemDisplayed(
         label: String,
         color: Color,
     ) {
         composeTestRule.onNode(
-            hasTestTag(TestTags.TAB_BAR_ITEM + label) and SemanticsMatcher.expectValue(
-                ColorRes,
-                color
-            )
+            hasTestTag(TestTags.TAB_BAR_ITEM + label) and hasColor(color)
         ).assertIsDisplayed()
     }
 }

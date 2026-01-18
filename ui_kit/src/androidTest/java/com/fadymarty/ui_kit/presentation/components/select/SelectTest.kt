@@ -6,7 +6,6 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import com.fadymarty.ui_kit.common.theme.MatuleTheme
 import com.fadymarty.ui_kit.common.util.TestTags
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
@@ -15,24 +14,21 @@ class SelectTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-    @Before
-    fun setUp() {
+    @Test
+    fun selectWithoutIcon_onClick_opensBottomSheet() {
         composeTestRule.setContent {
             MatuleTheme {
                 Select(
                     items = listOf(
-                        SelectItem("Item 1"),
-                        SelectItem("Item 2")
+                        SelectItem("Мужской"),
+                        SelectItem("Женский")
                     ),
-                    selectedItemLabel = "Item 1",
+                    selectedItemLabel = "Мужской",
                     onItemClick = {}
                 )
             }
         }
-    }
 
-    @Test
-    fun selectWithoutIcon_onClick_opensBottomSheet() {
         composeTestRule.onNodeWithTag(TestTags.SELECT)
             .performClick()
 

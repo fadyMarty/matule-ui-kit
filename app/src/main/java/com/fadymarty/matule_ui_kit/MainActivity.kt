@@ -24,7 +24,7 @@ import com.fadymarty.ui_kit.common.theme.MatuleTheme
 import com.fadymarty.ui_kit.presentation.components.buttons.BackButton
 import com.fadymarty.ui_kit.presentation.components.buttons.BigButton
 import com.fadymarty.ui_kit.presentation.components.buttons.CartButton
-import com.fadymarty.ui_kit.presentation.components.buttons.ChipButton
+import com.fadymarty.ui_kit.presentation.components.buttons.Chip
 import com.fadymarty.ui_kit.presentation.components.buttons.FilterButton
 import com.fadymarty.ui_kit.presentation.components.buttons.LoginButton
 import com.fadymarty.ui_kit.presentation.components.buttons.SmallButton
@@ -388,12 +388,12 @@ class MainActivity : ComponentActivity() {
                                     onClick = {},
                                     tertiary = true
                                 )
-                                ChipButton(
+                                Chip(
                                     selected = true,
                                     label = "Популярные",
                                     onClick = {}
                                 )
-                                ChipButton(
+                                Chip(
                                     selected = false,
                                     label = "Популярные",
                                     onClick = {}
